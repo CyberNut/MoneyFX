@@ -16,7 +16,7 @@ public class WindowNavigator {
         WindowNavigator.startFormController = startFormController;
     }
 
-    public static void loadVista(String fxml) {
+    public static void loadPane(String fxml) {
         try {
             startFormController.setPane(FXMLLoader.load(WindowNavigator.class.getResource(fxml)));
         } catch (IOException e) {

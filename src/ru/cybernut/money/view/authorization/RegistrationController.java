@@ -33,4 +33,8 @@ public class RegistrationController extends AnchorPane implements Initializable 
     public void onOk(ActionEvent actionEvent) {
 
     }
+
+    public void onAuthorise(ActionEvent actionEvent) {
+        WindowNavigator.loadPane(WindowNavigator.AUTHORIZATION_FORM);
+    }
 }

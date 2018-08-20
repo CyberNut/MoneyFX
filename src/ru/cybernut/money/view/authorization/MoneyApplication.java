@@ -20,8 +20,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MoneyApplication extends javafx.application.Application {
-    private static IController controller;
 
+    private static IController controller;
     private Group root = new Group();
 
     @Override
@@ -35,7 +35,7 @@ public class MoneyApplication extends javafx.application.Application {
 
     private Scene createScene(Pane mainPane) {
         Scene scene = new Scene(mainPane);
-        scene.getStylesheets().setAll(getClass().getResource("vista.css").toExternalForm());
+        //scene.getStylesheets().setAll(getClass().getResource("vista.css").toExternalForm());
         return scene;
     }
 
@@ -47,16 +47,11 @@ public class MoneyApplication extends javafx.application.Application {
         StartFormController mainController = loader.getController();
 
         WindowNavigator.setMainController(mainController);
-        WindowNavigator.loadVista(WindowNavigator.AUTHORIZATION_FORM);
+        WindowNavigator.loadPane(WindowNavigator.AUTHORIZATION_FORM);
 
         return mainPane;
     }
 
-    private Parent createContent() {
-        gotoLogin();
-        //gotoRegistration();
-        return root;
-    }
 
     public static void main(String[] args) {
         DataStore dataStore = new ArraysDataStore();
@@ -65,42 +60,23 @@ public class MoneyApplication extends javafx.application.Application {
         launch(args);
     }
 
-    private void gotoLogin() {
-        try {
-            LoginController login = (LoginController) replaceSceneContent("forms\\authorizationForm.fxml");
-            login.setApp(this);
-        } catch (Exception ex) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void gotoRegistration() {
-        try {
-            RegistrationController register = (RegistrationController) replaceSceneContent("forms\\registrationForm.fxml");
-            register.setApp(this);
-        } catch (Exception ex) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private Initializable replaceSceneContent(String fxml) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
-        InputStream in = MoneyApplication.class.getResourceAsStream(fxml);
-        loader.setBuilderFactory(new JavaFXBuilderFactory());
-        loader.setLocation(MoneyApplication.class.getResource(fxml));
-        AnchorPane page;
-
-        try {
-            page = (AnchorPane) loader.load(in);
-        } finally {
-            in.close();
-        }
-        root.getChildren().removeAll();
-        root.getChildren().addAll(page);
-
-        return (Initializable) loader.getController();
-    }
+//    private Initializable replaceSceneContent(String fxml) throws Exception {
+//        FXMLLoader loader = new FXMLLoader();
+//        InputStream in = MoneyApplication.class.getResourceAsStream(fxml);
+//        loader.setBuilderFactory(new JavaFXBuilderFactory());
+//        loader.setLocation(MoneyApplication.class.getResource(fxml));
+//        AnchorPane page;
+//
+//        try {
+//            page = (AnchorPane) loader.load(in);
+//        } finally {
+//            in.close();
+//        }
+//        root.getChildren().removeAll();
+//        root.getChildren().addAll(page);
+//
+//        return (Initializable) loader.getController();
+//    }
 
     public static IController getController() {
         return controller;

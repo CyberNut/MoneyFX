@@ -26,7 +26,6 @@ public class LoginController extends AnchorPane implements Initializable {
 
     private MoneyApplication application;
 
-
     public void setApp(MoneyApplication application) {
         this.application = application;
     }
@@ -55,7 +54,7 @@ public class LoginController extends AnchorPane implements Initializable {
     }
 
     public void onRegister(ActionEvent actionEvent) {
-        application.gotoRegistration();
+        WindowNavigator.loadPane(WindowNavigator.REGISTRATION_FORM);
     }
 
     public void onForgetPassword(ActionEvent actionEvent) {
