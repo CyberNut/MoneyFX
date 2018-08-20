@@ -1,4 +1,4 @@
-package ru.cybernut.money.view;
+package ru.cybernut.money.view.authorization;
 
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -1,6 +1,5 @@
-package ru.cybernut.money.view;
+package ru.cybernut.money.view.authorization;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
@@ -8,13 +7,14 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ru.cybernut.money.controller.Controller;
 import ru.cybernut.money.controller.IController;
 import ru.cybernut.money.model.ArraysDataStore;
 import ru.cybernut.money.model.DataStore;
 
-import javax.xml.crypto.Data;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,13 +25,31 @@ public class MoneyApplication extends javafx.application.Application {
     private Group root = new Group();
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        //Parent root = FXMLLoader.load(getClass().getResource("forms\\authorizationForm.fxml"));
+    public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Money");
-        primaryStage.setScene(new Scene(createContent()));
+        primaryStage.setScene(createScene(loadMainPane()));
         primaryStage.setMinHeight(200);
         primaryStage.setMinWidth(500);
         primaryStage.show();
+    }
+
+    private Scene createScene(Pane mainPane) {
+        Scene scene = new Scene(mainPane);
+        scene.getStylesheets().setAll(getClass().getResource("vista.css").toExternalForm());
+        return scene;
+    }
+
+    private Pane loadMainPane() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        Pane mainPane = (Pane) loader.load(getClass().getResourceAsStream(WindowNavigator.STARTING_FORM));
+
+        StartFormController mainController = loader.getController();
+
+        WindowNavigator.setMainController(mainController);
+        WindowNavigator.loadVista(WindowNavigator.AUTHORIZATION_FORM);
+
+        return mainPane;
     }
 
     private Parent createContent() {
@@ -49,7 +67,7 @@ public class MoneyApplication extends javafx.application.Application {
 
     private void gotoLogin() {
         try {
-            LoginController login = (LoginController)replaceSceneContent("forms\\authorizationForm.fxml");
+            LoginController login = (LoginController) replaceSceneContent("forms\\authorizationForm.fxml");
             login.setApp(this);
         } catch (Exception ex) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
@@ -58,7 +76,7 @@ public class MoneyApplication extends javafx.application.Application {
 
     public void gotoRegistration() {
         try {
-            RegistrationController register = (RegistrationController)replaceSceneContent("forms\\registrationForm.fxml");
+            RegistrationController register = (RegistrationController) replaceSceneContent("forms\\registrationForm.fxml");
             register.setApp(this);
         } catch (Exception ex) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
@@ -81,7 +99,7 @@ public class MoneyApplication extends javafx.application.Application {
         root.getChildren().removeAll();
         root.getChildren().addAll(page);
 
-        return (Initializable)loader.getController();
+        return (Initializable) loader.getController();
     }
 
     public static IController getController() {

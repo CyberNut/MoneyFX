@@ -1,11 +1,10 @@
-package ru.cybernut.money.view;
+package ru.cybernut.money.view.authorization;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import ru.cybernut.money.view.MoneyApplication;
 
 import java.net.URL;
 import java.util.ResourceBundle;
