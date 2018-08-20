@@ -1,12 +1,8 @@
 package ru.cybernut.money.view.authorization;
 
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ru.cybernut.money.controller.Controller;
@@ -15,9 +11,6 @@ import ru.cybernut.money.model.ArraysDataStore;
 import ru.cybernut.money.model.DataStore;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class MoneyApplication extends javafx.application.Application {
 
@@ -45,9 +38,10 @@ public class MoneyApplication extends javafx.application.Application {
         Pane mainPane = (Pane) loader.load(getClass().getResourceAsStream(WindowNavigator.STARTING_FORM));
 
         StartFormController mainController = loader.getController();
-
-        WindowNavigator.setMainController(mainController);
+        WindowNavigator.setStartFormController(mainController);
+        WindowNavigator.setController(controller);
         WindowNavigator.loadPane(WindowNavigator.AUTHORIZATION_FORM);
+
 
         return mainPane;
     }
@@ -59,24 +53,6 @@ public class MoneyApplication extends javafx.application.Application {
         controller.setDataStore(dataStore);
         launch(args);
     }
-
-//    private Initializable replaceSceneContent(String fxml) throws Exception {
-//        FXMLLoader loader = new FXMLLoader();
-//        InputStream in = MoneyApplication.class.getResourceAsStream(fxml);
-//        loader.setBuilderFactory(new JavaFXBuilderFactory());
-//        loader.setLocation(MoneyApplication.class.getResource(fxml));
-//        AnchorPane page;
-//
-//        try {
-//            page = (AnchorPane) loader.load(in);
-//        } finally {
-//            in.close();
-//        }
-//        root.getChildren().removeAll();
-//        root.getChildren().addAll(page);
-//
-//        return (Initializable) loader.getController();
-//    }
 
     public static IController getController() {
         return controller;

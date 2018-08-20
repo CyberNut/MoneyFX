@@ -51,7 +51,4 @@
             </children>
         </AnchorPane>
     </children>
-   <padding>
-      <Insets top="10.0" />
-   </padding>
 </AnchorPane>

@@ -9,7 +9,6 @@ public class StartFormController {
     @FXML
     public AnchorPane mainPane;
 
-
     public void setPane(Node node) {
         mainPane.getChildren().setAll(node);
     }
