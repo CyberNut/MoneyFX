@@ -14,6 +14,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import ru.cybernut.money.controller.IController;
+import ru.cybernut.money.view.MoneyApplication;
+import ru.cybernut.money.view.WindowNavigator;
 
 /**
  * Login Controller.
@@ -45,7 +47,6 @@ public class LoginController extends AnchorPane implements Initializable {
 
     public void onOk(ActionEvent event) {
         boolean result = controller.authoriseUser(userName.getText(), password.getText());
-        System.out.println(result);
         if (result) {
             try {
                 WindowNavigator.getMoneyApplication().showMainWindow();

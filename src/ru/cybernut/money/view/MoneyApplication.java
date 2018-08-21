@@ -1,4 +1,4 @@
-package ru.cybernut.money.view.authorization;
+package ru.cybernut.money.view;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -9,6 +9,8 @@ import ru.cybernut.money.controller.Controller;
 import ru.cybernut.money.controller.IController;
 import ru.cybernut.money.model.ArraysDataStore;
 import ru.cybernut.money.model.DataStore;
+import ru.cybernut.money.view.WindowNavigator;
+import ru.cybernut.money.view.authorization.StartFormController;
 
 import java.io.IOException;
 

@@ -1,8 +1,10 @@
 package ru.cybernut.money.view.main;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import ru.cybernut.money.controller.IController;
 
 public class MainWindowController {
@@ -14,6 +16,14 @@ public class MainWindowController {
 
     IController controller;
 
+    public AnchorPane getMainPane() {
+        return mainPane;
+    }
+
+    public AnchorPane getAdditionalPane() {
+        return additionalPane;
+    }
+
     public IController getController() {
         return controller;
     }
@@ -22,11 +32,19 @@ public class MainWindowController {
         this.controller = controller;
     }
 
-    public void setMainPane(Node node) {
-        mainPane.getChildren().setAll(node);
+    public void setPane(Node node, Pane pane) {
+        pane.getChildren().setAll(node);
     }
 
-    public void showMainWindow() {
+    public void onOperations(ActionEvent actionEvent) {
+    }
+
+    public void onCategories(ActionEvent actionEvent) {
+
+
+    }
+
+    public void onService(ActionEvent actionEvent) {
 
     }
 }

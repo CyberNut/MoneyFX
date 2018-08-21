@@ -8,6 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import ru.cybernut.money.controller.IController;
+import ru.cybernut.money.view.WindowNavigator;
 
 import java.net.URL;
 import java.util.ResourceBundle;
