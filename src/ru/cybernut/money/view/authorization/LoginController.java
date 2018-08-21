@@ -1,5 +1,6 @@
 package ru.cybernut.money.view.authorization;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,6 +26,15 @@ public class LoginController extends AnchorPane implements Initializable {
     PasswordField password;
 
     private IController controller;
+    private MoneyApplication application;
+
+    public MoneyApplication getApplication() {
+        return application;
+    }
+
+    public void setApplication(MoneyApplication application) {
+        this.application = application;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -37,6 +47,11 @@ public class LoginController extends AnchorPane implements Initializable {
         boolean result = controller.authoriseUser(userName.getText(), password.getText());
         System.out.println(result);
         if (result) {
+            try {
+                WindowNavigator.getMoneyApplication().showMainWindow();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

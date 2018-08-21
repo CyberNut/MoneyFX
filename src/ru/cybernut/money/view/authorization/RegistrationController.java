@@ -3,6 +3,7 @@ package ru.cybernut.money.view.authorization;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -17,6 +18,8 @@ public class RegistrationController extends AnchorPane implements Initializable 
     public TextField userName;
     @FXML
     public PasswordField password;
+    @FXML
+    public Label labelErrorMessage;
 
     private IController controller;
 
@@ -29,10 +32,28 @@ public class RegistrationController extends AnchorPane implements Initializable 
     }
 
     public void onCancel(ActionEvent actionEvent) {
-
+        WindowNavigator.loadPane(WindowNavigator.AUTHORIZATION_FORM);
     }
 
     public void onOk(ActionEvent actionEvent) {
+
+        String userNameText = userName.getText();
+        String passwordText = password.getText();
+
+        if (!"".equals(userNameText) && !"".equals(passwordText)) {
+            if (controller.getUserByName(userName.getText()) == null) {
+                if (controller.createUser(userNameText, passwordText) == true) {
+                    labelErrorMessage.setText("Пользователь успешно создан!");
+                    labelErrorMessage.setVisible(true);
+                } else {
+                    labelErrorMessage.setText("Не удалось создать пользователя!");
+                    labelErrorMessage.setVisible(true);
+                }
+            } else {
+                labelErrorMessage.setText("Пользователь с таким именем уже существует!");
+                labelErrorMessage.setVisible(true);
+            }
+        }
 
     }
 

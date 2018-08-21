@@ -43,7 +43,7 @@
                                 <Insets />
                             </VBox.margin>
                      <children>
-                        <Label prefHeight="23.0" text="Некорректное имя пользователя или пароль" textFill="#da2929" visible="false" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                        <Label fx:id="labelErrorMessage" prefHeight="23.0" text="Некорректное имя пользователя или пароль" textFill="#da2929" visible="false" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                      </children>
                         </AnchorPane>
                     </children>

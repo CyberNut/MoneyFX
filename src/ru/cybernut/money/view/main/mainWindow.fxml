@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.cybernut.money.view.main.MainWindowController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <AnchorPane fx:id="topPane" prefHeight="56.0" prefWidth="600.0">
+               <children>
+                  <Label text="topPane" />
+               </children></AnchorPane>
+            <AnchorPane fx:id="commandPane" prefHeight="50.0" prefWidth="600.0">
+               <children>
+                  <Label text="commandPane" />
+               </children></AnchorPane>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <AnchorPane fx:id="mainPane" prefHeight="200.0" prefWidth="453.0">
+                     <children>
+                        <Label text="mainPane" />
+                     </children></AnchorPane>
+                  <AnchorPane fx:id="infoPane" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="313.0" prefWidth="230.0">
+                           <children>
+                              <AnchorPane fx:id="accountsPane" prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="accountsPane" />
+                                 </children></AnchorPane>
+                              <AnchorPane fx:id="additionalPane" prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="additionalPane" />
+                                 </children></AnchorPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

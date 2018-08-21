@@ -16,14 +16,17 @@ public class MoneyApplication extends javafx.application.Application {
 
     private static IController controller;
     private Group root = new Group();
+    private Stage stage;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        stage = primaryStage;
         primaryStage.setTitle("Money");
         primaryStage.setScene(createScene(loadMainPane()));
         primaryStage.setMinHeight(200);
         primaryStage.setMinWidth(500);
         primaryStage.show();
+        WindowNavigator.setMoneyApplication(this);
     }
 
     private Scene createScene(Pane mainPane) {
@@ -46,6 +49,14 @@ public class MoneyApplication extends javafx.application.Application {
         return mainPane;
     }
 
+    public void showMainWindow() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        Pane mainPane = (Pane) loader.load(getClass().getResourceAsStream(WindowNavigator.MAIN_FORM));
+        Scene scene = new Scene(mainPane);
+        stage.setScene(scene);
+        stage.show();
+    }
 
     public static void main(String[] args) {
         DataStore dataStore = new ArraysDataStore();

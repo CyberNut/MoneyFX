@@ -10,11 +10,20 @@ public class WindowNavigator {
     private static IController controller;
 
     public static final String STARTING_FORM = "startingForm.fxml";
-
     public static final String AUTHORIZATION_FORM = "authorizationForm.fxml";
     public static final String REGISTRATION_FORM = "registrationForm.fxml";
-    private static StartFormController startFormController;
+    public static final String MAIN_FORM = "..\\main\\mainWindow.fxml";
 
+    private static StartFormController startFormController;
+    private static MoneyApplication moneyApplication;
+
+    public static MoneyApplication getMoneyApplication() {
+        return moneyApplication;
+    }
+
+    public static void setMoneyApplication(MoneyApplication moneyApplication) {
+        WindowNavigator.moneyApplication = moneyApplication;
+    }
 
     public static void setController(IController controller) {
         WindowNavigator.controller = controller;
