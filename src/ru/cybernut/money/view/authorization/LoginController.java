@@ -14,8 +14,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import ru.cybernut.money.controller.IController;
+import ru.cybernut.money.view.LoginWindowNavigator;
 import ru.cybernut.money.view.MoneyApplication;
-import ru.cybernut.money.view.WindowNavigator;
 
 /**
  * Login Controller.
@@ -42,17 +42,13 @@ public class LoginController extends AnchorPane implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         userName.setPromptText("username");
         password.setPromptText("password");
-        controller = WindowNavigator.getController();
+        controller = LoginWindowNavigator.getController();
     }
 
     public void onOk(ActionEvent event) {
         boolean result = controller.authoriseUser(userName.getText(), password.getText());
         if (result) {
-            try {
-                WindowNavigator.getMoneyApplication().showMainWindow();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            LoginWindowNavigator.getMoneyApplication().showMainWindow();
         }
     }
 
@@ -63,7 +59,7 @@ public class LoginController extends AnchorPane implements Initializable {
     }
 
     public void onRegister(ActionEvent actionEvent) {
-        WindowNavigator.loadPane(WindowNavigator.REGISTRATION_FORM);
+        LoginWindowNavigator.loadPane(LoginWindowNavigator.REGISTRATION_FORM);
     }
 
     public void onForgetPassword(ActionEvent actionEvent) {

@@ -11,6 +11,7 @@ public class Controller implements IController {
 
     private static Controller instance;
     private DataStore dataStore;
+    private User currentUser;
 
     private Controller() {
 
@@ -66,5 +67,15 @@ public class Controller implements IController {
     @Override
     public boolean addCategory(Category category) {
         return false;
+    }
+
+    @Override
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    @Override
+    public void setCurrentUser(User user) {
+        this.currentUser = user;
     }
 }

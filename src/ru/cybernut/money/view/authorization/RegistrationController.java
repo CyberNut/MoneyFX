@@ -8,7 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import ru.cybernut.money.controller.IController;
-import ru.cybernut.money.view.WindowNavigator;
+import ru.cybernut.money.view.LoginWindowNavigator;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,11 +29,11 @@ public class RegistrationController extends AnchorPane implements Initializable 
         userName.setPromptText("username");
         password.setPromptText("password");
 
-        controller = WindowNavigator.getController();
+        controller = LoginWindowNavigator.getController();
     }
 
     public void onCancel(ActionEvent actionEvent) {
-        WindowNavigator.loadPane(WindowNavigator.AUTHORIZATION_FORM);
+        LoginWindowNavigator.loadPane(LoginWindowNavigator.AUTHORIZATION_FORM);
     }
 
     public void onOk(ActionEvent actionEvent) {
@@ -59,6 +59,6 @@ public class RegistrationController extends AnchorPane implements Initializable 
     }
 
     public void onAuthorise(ActionEvent actionEvent) {
-        WindowNavigator.loadPane(WindowNavigator.AUTHORIZATION_FORM);
+        LoginWindowNavigator.loadPane(LoginWindowNavigator.AUTHORIZATION_FORM);
     }
 }

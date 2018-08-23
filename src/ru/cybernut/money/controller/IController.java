@@ -5,6 +5,7 @@ import ru.cybernut.money.model.Category;
 import ru.cybernut.money.model.DataStore;
 import ru.cybernut.money.model.User;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 public interface IController {
@@ -12,6 +13,8 @@ public interface IController {
     void setDataStore(DataStore dataStore);
     DataStore getDataStore();
     boolean authoriseUser(String userName, String password);
+    User getCurrentUser();
+    void setCurrentUser(User user);
     boolean createUser(String userName, String password);
     User getUserByName(String userName);
     List<Account> getAccounts();

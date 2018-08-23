@@ -47,4 +47,8 @@ public class MainWindowController {
     public void onService(ActionEvent actionEvent) {
 
     }
+
+    public void setPane(Node node) {
+
+    }
 }

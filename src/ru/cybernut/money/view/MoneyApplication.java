@@ -9,7 +9,6 @@ import ru.cybernut.money.controller.Controller;
 import ru.cybernut.money.controller.IController;
 import ru.cybernut.money.model.ArraysDataStore;
 import ru.cybernut.money.model.DataStore;
-import ru.cybernut.money.view.WindowNavigator;
 import ru.cybernut.money.view.authorization.StartFormController;
 
 import java.io.IOException;
@@ -21,14 +20,14 @@ public class MoneyApplication extends javafx.application.Application {
     private Stage stage;
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         stage = primaryStage;
         primaryStage.setTitle("Money");
         primaryStage.setScene(createScene(loadMainPane()));
         primaryStage.setMinHeight(200);
         primaryStage.setMinWidth(500);
         primaryStage.show();
-        WindowNavigator.setMoneyApplication(this);
+        LoginWindowNavigator.setMoneyApplication(this);
     }
 
     private Scene createScene(Pane mainPane) {
@@ -37,24 +36,35 @@ public class MoneyApplication extends javafx.application.Application {
         return scene;
     }
 
-    private Pane loadMainPane() throws IOException {
+    private Pane loadMainPane() {
         FXMLLoader loader = new FXMLLoader();
 
-        Pane mainPane = (Pane) loader.load(getClass().getResourceAsStream(WindowNavigator.STARTING_FORM));
-
+        Pane mainPane = null;
+        try {
+            mainPane = (Pane) loader.load(getClass().getResourceAsStream(LoginWindowNavigator.STARTING_FORM));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         StartFormController mainController = loader.getController();
-        WindowNavigator.setStartFormController(mainController);
-        WindowNavigator.setController(controller);
-        WindowNavigator.loadPane(WindowNavigator.AUTHORIZATION_FORM);
+        LoginWindowNavigator.setStartFormController(mainController);
+        LoginWindowNavigator.setController(controller);
+        LoginWindowNavigator.loadPane(LoginWindowNavigator.AUTHORIZATION_FORM);
 
 
         return mainPane;
     }
 
-    public void showMainWindow() throws IOException {
+    public void showMainWindow() {
         FXMLLoader loader = new FXMLLoader();
 
-        Pane mainPane = (Pane) loader.load(getClass().getResourceAsStream(WindowNavigator.MAIN_FORM));
+        Pane mainPane = null;
+        try {
+            mainPane = (Pane) loader.load(getClass().getResourceAsStream(MainWindowNavigator.MAIN_FORM));
+            MainWindowNavigator.setMainWindowController(loader.getController());
+            MainWindowNavigator.setMoneyApplication(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Scene scene = new Scene(mainPane);
         stage.setScene(scene);
         stage.show();
