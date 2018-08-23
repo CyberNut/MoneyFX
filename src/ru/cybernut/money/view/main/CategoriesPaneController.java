@@ -29,16 +29,21 @@ public class CategoriesPaneController implements Initializable {
         this.controller = controller;
     }
 
+    public void update() {
+        if (controller != null) {
+            List<Category> categoryList = controller.getCategories();
+            final TreeItem<String> treeRoot = new TreeItem<>("Статьи доходов и расходов");
+            for (Category category : categoryList) {
+                treeRoot.getChildren().add(new TreeItem<>(category.getName()));
+            }
+            categoriesTree.setShowRoot(true);
+            categoriesTree.setRoot(treeRoot);
+            treeRoot.setExpanded(true);
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        List<Category> categoryList = controller.getCategories();
-        final TreeItem<String> treeRoot = new TreeItem<>("Статьи доходов и расходов");
-        for (Category category : categoryList) {
-            treeRoot.getChildren().add(new TreeItem<>(category.getName()));
-        }
-        categoriesTree.setShowRoot(true);
-        categoriesTree.setRoot(treeRoot);
-        treeRoot.setExpanded(true);
 
     }
 }

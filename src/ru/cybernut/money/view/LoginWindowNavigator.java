@@ -10,9 +10,9 @@ public class LoginWindowNavigator {
 
     private static IController controller;
 
-    public static final String STARTING_FORM = "\\authorization\\startingForm.fxml";
-    public static final String AUTHORIZATION_FORM = "\\authorization\\authorizationForm.fxml";
-    public static final String REGISTRATION_FORM = "\\authorization\\registrationForm.fxml";
+    public static final String STARTING_FORM = "authorization/startingForm.fxml";
+    public static final String AUTHORIZATION_FORM = "authorization/authorizationForm.fxml";
+    public static final String REGISTRATION_FORM = "authorization/registrationForm.fxml";
 
     private static StartFormController startFormController;
     private static MoneyApplication moneyApplication;

@@ -1,8 +1,10 @@
 package ru.cybernut.money.view;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import ru.cybernut.money.controller.IController;
 import ru.cybernut.money.view.authorization.StartFormController;
+import ru.cybernut.money.view.main.CategoriesPaneController;
 import ru.cybernut.money.view.main.MainWindowController;
 
 import java.io.IOException;
@@ -11,9 +13,9 @@ public class MainWindowNavigator {
 
     private static IController controller;
 
-    public static final String MAIN_FORM = "\\main\\mainWindow.fxml";
-    public static final String CATEGORIES_PANE = "\\main\\categoriesPane.fxml";
-    public static final String OPERATIONS_PANE = "\\main\\operationsPane.fxml";
+    public static final String MAIN_FORM = "main/mainWindow.fxml";
+    public static final String CATEGORIES_PANE = "main/categoriesPane.fxml";
+    public static final String OPERATIONS_PANE = "main/operationsPane.fxml";
 
     private static MoneyApplication moneyApplication;
     private static MainWindowController mainWindowController;
@@ -38,11 +40,17 @@ public class MainWindowNavigator {
         MainWindowNavigator.mainWindowController = mainWindowController;
     }
 
-    public static void loadPane(String fxml) {
+    public static void loadMainPane(String fxml) {
+        FXMLLoader loader = new FXMLLoader();
+        Pane mainPane = null;
         try {
-            mainWindowController.setPane(FXMLLoader.load(MainWindowNavigator.class.getResource(fxml)));
+            mainPane = (Pane) loader.load(MainWindowNavigator.class.getResourceAsStream(fxml));
+
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        if(mainPane != null) {
+            mainWindowController.setMainPane(mainPane);
         }
     }
 
