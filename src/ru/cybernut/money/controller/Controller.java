@@ -61,7 +61,7 @@ public class Controller implements IController {
 
     @Override
     public List<Category> getCategories() {
-        return null;
+        return dataStore.getCategories();
     }
 
     @Override

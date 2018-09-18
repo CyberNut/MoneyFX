@@ -40,6 +40,19 @@ public class MainWindowNavigator {
         MainWindowNavigator.mainWindowController = mainWindowController;
     }
 
+    public static void showCategories() {
+        FXMLLoader loader = new FXMLLoader();
+        try {
+            MainWindowNavigator.mainWindowController.setMainPane((Pane)loader.load(MainWindowNavigator.class.getResourceAsStream(MainWindowNavigator.CATEGORIES_PANE)));
+            CategoriesPaneController categoriesPaneController = (CategoriesPaneController)loader.getController();
+            categoriesPaneController.setController(MainWindowNavigator.controller);
+            categoriesPaneController.update();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static void loadMainPane(String fxml) {
         FXMLLoader loader = new FXMLLoader();
         Pane mainPane = null;

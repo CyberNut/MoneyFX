@@ -2,6 +2,7 @@ package ru.cybernut.money.view.main;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
@@ -41,11 +42,12 @@ public class MainWindowController implements Initializable {
     }
 
     public void onCategories(ActionEvent actionEvent) {
-        MainWindowNavigator.loadMainPane(MainWindowNavigator.CATEGORIES_PANE);
-        CategoriesPaneController categoriesPaneController = loader.getController();
-        categoriesPaneController.setController(controller);
-        categoriesPaneController.update();
-
+//        FXMLLoader loader = new FXMLLoader();
+//        MainWindowNavigator.loadMainPane(MainWindowNavigator.CATEGORIES_PANE);
+//        CategoriesPaneController categoriesPaneController = loader.getController();
+//        categoriesPaneController.setController(controller);
+//        categoriesPaneController.update();
+        MainWindowNavigator.showCategories();
     }
 
     public void onService(ActionEvent actionEvent) {

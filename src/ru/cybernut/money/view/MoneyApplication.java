@@ -50,7 +50,6 @@ public class MoneyApplication extends javafx.application.Application {
         LoginWindowNavigator.setController(controller);
         LoginWindowNavigator.loadPane(LoginWindowNavigator.AUTHORIZATION_FORM);
 
-
         return mainPane;
     }
 
@@ -62,6 +61,7 @@ public class MoneyApplication extends javafx.application.Application {
             mainPane = (Pane) loader.load(getClass().getResourceAsStream(MainWindowNavigator.MAIN_FORM));
             MainWindowNavigator.setMainWindowController(loader.getController());
             MainWindowNavigator.setMoneyApplication(this);
+            MainWindowNavigator.setController(controller);
         } catch (IOException e) {
             e.printStackTrace();
         }

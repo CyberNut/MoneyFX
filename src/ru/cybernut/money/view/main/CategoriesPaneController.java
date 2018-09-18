@@ -1,5 +1,6 @@
 package ru.cybernut.money.view.main;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TreeItem;
@@ -44,6 +45,10 @@ public class CategoriesPaneController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+    public void onAddCategory(ActionEvent actionEvent) {
 
     }
 }

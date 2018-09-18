@@ -9,7 +9,7 @@
    <children>
       <ToolBar prefHeight="24.0" prefWidth="600.0">
         <items>
-          <Button mnemonicParsing="false" text="Button" />
+          <Button id="buttonAddCategory" fx:id="buttonAddCategory" mnemonicParsing="false" onAction="#onAddCategory" text="Add category" />
         </items>
       </ToolBar>
       <TreeView fx:id="categoriesTree" layoutY="35.0" prefHeight="365.0" prefWidth="600.0" />
